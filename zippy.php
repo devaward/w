@@ -19,7 +19,7 @@ if(!empty($_GET['zp'])) {
     /*ini_set("max_execution_time", 0);
     $stream = new VideoStream($decode->url);
     $stream->start();*/
-    echo $decode->url;
+    echo file_get_contents($decode->url);
   } else {
     echo 'Extension not mp4';
   }
