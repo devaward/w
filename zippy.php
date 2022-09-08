@@ -14,7 +14,7 @@ if(!empty($_GET['zp'])) {
   $url = json_decode(decrypt($_GET['zp'], $password_salt))->url;
   $json = file_get_contents('https://node' . $item . '.herokuapp.com/zippy?url=' . $url);
   $decode = json_decode($json);
-  $extension = end(explode('.', $decode));
+  $extension = end(explode('.', $decode->title));
   if($extension === 'mp4') {
     ini_set("max_execution_time", 0);
     $stream = new VideoStream($decode->url);
