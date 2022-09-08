@@ -20,15 +20,15 @@ if(!empty($_GET['zp'])) {
 
   /* [Buat Dom] */
   $url = json_decode(decrypt($_GET['zp'], $password_salt))->url;
-  $html = file_get_contents($url);
+  /*$html = file_get_contents($url);
   $dom = new Dom;
   $dom->setOptions(
     (new Options())
-        ->setRemoveScripts(false)
-);
+    ->setRemoveScripts(false)
+  );
   $dom->loadStr($html);
 
-  /* [Cari Script] */
+  // [Cari Script]
   $scripts = $dom->find('script');
   $array_script;
   $find = "Math.pow";
@@ -38,7 +38,7 @@ if(!empty($_GET['zp'])) {
     }
   }
 
-  /* [Cari title] */
+  // [Cari title]
   $metas = $dom->find('meta');
   $title;
   foreach ($metas as $meta) {
@@ -49,7 +49,7 @@ if(!empty($_GET['zp'])) {
     }
   }
 
-  /* [settingan menyesuaikan logika zippyshare, mungkin sewaktu" bisa berubah] */
+  // [settingan menyesuaikan logika zippyshare, mungkin sewaktu" bisa berubah]
   $text = $array_script->text;
   $regex = '/var a =(.*); document.getElementById\(\'dlbutton\'\).omg(.*)/s';
   $get_id = preg_replace($regex,'$1', $text);
@@ -57,17 +57,17 @@ if(!empty($_GET['zp'])) {
   $length = strlen($substring);
   $id_pow = pow($get_id, 3) + $length;
 
-  /* [setelah menemukan hasil dari pow, buat link DL] */
+  // [setelah menemukan hasil dari pow, buat link DL]
   $parse = parse_url($_GET['url']);
   $host  = $parse['host'];
   $get_id = explode('/',$parse['path'])[2];
   $link_DL = 'https://'.$host.'/d/'.$get_id.'/'.$id_pow.'/'.rawurlencode(trim($title));
 
-  /* [Buat Link Streaming] */
+  // [Buat Link Streaming]
   ini_set("max_execution_time", 0);
   $stream = new VideoStream($decode->url);
-  $stream->start();
+  $stream->start();*/
 } else {
-    header("HTTP/1.1 403 Forbidden" );
-    exit;
+  header("HTTP/1.1 403 Forbidden" );
+  exit;
 }
