@@ -67,6 +67,7 @@ if(!empty($_GET['zp'])) {
   ini_set("max_execution_time", 0);
   $stream = new VideoStream($decode->url);
   $stream->start();*/
+  echo $url;
 } else {
   header("HTTP/1.1 403 Forbidden" );
   exit;
