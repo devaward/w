@@ -8,6 +8,9 @@ require "vendor/autoload.php";
 use PHPHtmlParser\Dom;
 use PHPHtmlParser\Options;
 
+/* [variables] */
+$password_salt = 'Jona Ganteng';
+
 if(!empty($_GET['zp'])) {
   /*$parse = parse_url($_GET['url']);
   $host  = $parse['host'];
