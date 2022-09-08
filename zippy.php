@@ -1,9 +1,13 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 header('Access-Control-Allow-Origin: *');
 
 /* [Fungsi] */
-include 'functions.php';
+require 'functions.php';
 require "vendor/autoload.php";
 use PHPHtmlParser\Dom;
 use PHPHtmlParser\Options;
@@ -65,7 +69,7 @@ if(!empty($_GET['zp'])) {
 
   // [Buat Link Streaming]
   ini_set("max_execution_time", 0);
-  $stream = new VideoStream($decode->url);
+  $stream = new VideoStream($link_DL);
   $stream->start();
 } else {
   header("HTTP/1.1 403 Forbidden" );
