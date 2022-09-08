@@ -58,7 +58,7 @@ if(!empty($_GET['zp'])) {
   $id_pow = pow($get_id, 3) + $length;
 
   // [setelah menemukan hasil dari pow, buat link DL]
-  $parse = parse_url($_GET['url']);
+  $parse = parse_url($url);
   $host  = $parse['host'];
   $get_id = explode('/',$parse['path'])[2];
   $link_DL = 'https://'.$host.'/d/'.$get_id.'/'.$id_pow.'/'.rawurlencode(trim($title));
