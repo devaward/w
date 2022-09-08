@@ -19,8 +19,8 @@ if(!empty($_GET['zp'])) {
   $html =  file_get_contents($create_fakeDL);*/
 
   /* [Buat Dom] */
-  $url = json_decode(decrypt($_GET['zp'], $password_salt))->url;
-  /*$html = file_get_contents($url);
+  $url = urldecode(json_decode(decrypt($_GET['zp'], $password_salt))->url);
+  $html = file_get_contents($url);
   $dom = new Dom;
   $dom->setOptions(
     (new Options())
@@ -64,10 +64,10 @@ if(!empty($_GET['zp'])) {
   $link_DL = 'https://'.$host.'/d/'.$get_id.'/'.$id_pow.'/'.rawurlencode(trim($title));
 
   // [Buat Link Streaming]
-  ini_set("max_execution_time", 0);
+  /*ini_set("max_execution_time", 0);
   $stream = new VideoStream($decode->url);
   $stream->start();*/
-  echo $url;
+  echo $link_DL;
 } else {
   header("HTTP/1.1 403 Forbidden" );
   exit;
