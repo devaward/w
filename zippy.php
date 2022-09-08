@@ -16,9 +16,10 @@ if(!empty($_GET['zp'])) {
   $decode = json_decode($json);
   $extension = end(explode('.', $decode->title));
   if($extension === 'mp4') {
-    ini_set("max_execution_time", 0);
+    /*ini_set("max_execution_time", 0);
     $stream = new VideoStream($decode->url);
-    $stream->start();
+    $stream->start();*/
+    echo $decode->url;
   } else {
     echo 'Extension not mp4';
   }
