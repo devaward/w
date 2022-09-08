@@ -12,7 +12,7 @@ header('Access-Control-Allow-Origin: *');
 if(!empty($_GET['zp'])) {
   $url = json_decode(decrypt($_GET['zp'], $password))->url;
   $json = file_get_contents('https://node' . $item . '/zippy?url=' . $url);
-  echo $json;
+  echo $_GET['zp'];
 } else {
   header("HTTP/1.1 403 Forbidden" );
   exit;
